@@ -27,12 +27,12 @@ class BurgerBuilder extends Component {
     }
 
     componentDidMount(){
-        axios.get('https://react-mcdonalds-order.firebaseio.com/ingredients.json')
-            .then(response => {
-                this.setState({ingredients: response.data})
-            }).catch(error => {
-                this.setState({error: true});
-            })
+        // axios.get('https://react-mcdonalds-order.firebaseio.com/ingredients.json')
+        //     .then(response => {
+        //         this.setState({ingredients: response.data})
+        //     }).catch(error => {
+        //         this.setState({error: true});
+        //     })
     }
 
     updatePurchaseState(ingredients) {
@@ -83,29 +83,7 @@ class BurgerBuilder extends Component {
         this.setState({purchasing: false});
     }
     purchaseContinueHandler = () => {
-        // this.setState({loading: true});
-
-        // const order = {
-        //     ingredients: this.state.ingredients,
-        //     price: this.state.totalPrice,
-        //     customer: {
-        //         name: 'rex',
-        //         address: {
-        //             street: 'Teststreet 1',
-        //             zipCode: '41351',
-        //             country: 'USA'
-        //         },
-        //         email: 'Testtes@gmail.com' 
-        //     },
-        //     deliverMethod: 'fastest'
-
-        // };
-        // axios.post('/orders.json', order).then(res => {
-        //     this.setState({loading: false, purchasing: false});
-        // }).catch(err => {
-        //     this.setState({loading: false, purchasing: false});
-        // });
-
+       
         const queryParams = [];
         for(let i in this.state.ingredients){
             queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]));
